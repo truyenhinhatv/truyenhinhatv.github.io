@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HTV Trực Tuyến Clone</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Video.js CSS -->
+  <link href="https://vjs.zencdn.net/8.9.0/video-js.css" rel="stylesheet" />
+
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    header {
+      background: linear-gradient(to right, #a8071a, #ff4d4f);
+      padding: 15px 0;
+      color: white;
+    }
+
+    header .navbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: white;
+      font-weight: bold;
+    }
+
+    header .navbar-brand img {
+      height: 40px;
+    }
+
+    header .navbar-brand span {
+      font-size: 0.8rem;
+      background: #ffc107;
+      color: black;
+      padding: 2px 6px;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    header .nav-link {
+      color: white !important;
+    }
+
+    .trend-ticker {
+      background: #fff;
+      padding: 5px 15px;
+      font-size: 14px;
+      overflow: hidden;
+      white-space: nowrap;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .trend-ticker span {
+      display: inline-block;
+      padding-right: 100%;
+      animation: ticker 20s linear infinite;
+      color: #d90429;
+    }
+
+    @keyframes ticker {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+
+    .video-container {
+      margin-top: 30px;
+    }
+
+    .tab-button {
+      margin: 5px;
+    }
+
+    .sidebar {
+      margin-top: 30px;
+    }
+
+    .channel-icons img {
+      width: 80px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .channel-icons img:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABOUAAAEGCAYAAAAqtyEMAAAADmVYSWZNTQAqAAAACAAAAAAAAADSU5..." alt="A Network">
+          <span>BETA</span>
+        </a>
+        <div class="collapse navbar-collapse">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="#">Trang chủ</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Trực tuyến</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Lịch phát sóng</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <div class="trend-ticker">
+    <span>🔥 Xu hướng: Phòng cháy chữa cháy • TPHCM • Dự báo thời tiết • Kinh tế • Công nghệ • Giải trí • Tin mới nhất</span>
+  </div>
+
+  <div class="container video-container">
+    <div class="row">
+      <div class="col-lg-8">
+        <h4 class="mb-4">/ Xem trực tuyến</h4>
+
+        <div class="d-flex gap-3 channel-icons mb-3">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/HTV9_logo_2020.svg" onclick="changeStream('https://vthanh.utako.moe/ATVHD/index.m3u8')" alt="HTV9">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/HTV7_logo_2020.svg" onclick="changeStream('https://vthanh.utako.moe/oni/index.m3u8')" alt="HTV7">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/f/fd/HTV_Sports_logo.svg" onclick="changeStream('https://vthanh.utako.moe/tpvchannel/index.m3u8')" alt="HTV Thể thao">
+        </div>
+
+        <video
+          id="liveVideo"
+          class="video-js vjs-default-skin vjs-fluid"
+          controls
+          preload="auto"
+          data-setup='{}'>
+          <source src="https://vthanh.utako.moe/ATVHD/index.m3u8" type="application/x-mpegURL" />
+          Your browser does not support HTML5 video.
+        </video>
+
+        <div class="mt-4 p-3 bg-white rounded shadow-sm">
+          <h5>Lịch phát sóng</h5>
+          <ul class="list-unstyled">
+            <li>09:00 - Bản tin HTV</li>
+            <li>10:00 - Chương trình văn hóa</li>
+            <li>11:00 - Phim truyện Việt Nam</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-4 sidebar">
+        <div class="bg-white p-3 rounded shadow-sm">
+          <h5>Quảng cáo</h5>
+          <img src="https://via.placeholder.com/350x250" alt="Ad Banner" class="img-fluid">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Video.js -->
+  <script src="https://vjs.zencdn.net/8.9.0/video.min.js"></script>
+
+  <script>
+    const player = videojs('liveVideo');
+
+    function changeStream(url) {
+      player.src({
+        src: url,
+        type: 'application/x-mpegURL'
+      });
+      player.play();
+    }
+  </script>
+</body>
+
+</html>
