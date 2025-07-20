@@ -173,6 +173,30 @@
       player.play();
     }
   </script>
+  <script>
+  const player = videojs('liveVideo');
+
+  const fallbackSrc = 'vuvo.mp4'; // Đổi link này thành video fallback của bạn
+
+  function changeStream(url) {
+    player.src({
+      src: url,
+      type: 'application/x-mpegURL'
+    });
+    player.play();
+  }
+
+  // 🔁 Fallback khi stream lỗi
+  player.on('error', function () {
+    console.warn('⚠️ Stream lỗi, đang chuyển sang fallback video...');
+    player.src({
+      src: fallbackSrc,
+      type: 'video/mp4'
+    });
+    player.play();
+  });
+</script>
+
 </body>
 
 </html>
