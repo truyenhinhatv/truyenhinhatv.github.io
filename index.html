@@ -162,38 +162,32 @@
   <!-- Video.js -->
   <script src="https://vjs.zencdn.net/8.9.0/video.min.js"></script>
 
-  <script>
-    const player = videojs('liveVideo');
-
-    function changeStream(url) {
-      player.src({
-        src: url,
-        type: 'application/x-mpegURL'
-      });
-      player.play();
-    }
-  </script>
-  <script>
+ <script>
   const player = videojs('liveVideo');
-
-  const fallbackSrc = 'testfall.mp4'; // Đổi link này thành video fallback của bạn
 
   function changeStream(url) {
     player.src({
       src: url,
-      type: 'video/mp4'
+      type: 'application/x-mpegURL'
     });
     player.play();
   }
 
-  // 🔁 Fallback khi stream lỗi
+  // Fallback nếu stream lỗi
   player.on('error', function () {
-    console.warn('⚠️ Stream lỗi, đang chuyển sang fallback video...');
-    player.src({
-      src: fallbackSrc,
-      type: 'video/mp4'
-    });
-    player.play();
+    const errorCode = player.error().code;
+    console.warn("Stream error code:", errorCode);
+
+    // Chỉ fallback nếu đang là HLS stream
+    const currentSrc = player.currentSrc();
+    if (currentSrc.includes('.m3u8')) {
+      console.log("Falling back to backup video...");
+      player.src({
+        src: 'testfall.mp4', // Đường dẫn fallback
+        type: 'video/mp4'
+      });
+      player.play();
+    }
   });
 </script>
 
