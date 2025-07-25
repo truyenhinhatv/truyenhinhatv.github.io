@@ -278,19 +278,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="https://anetwork.vn/statistics" class="d-block text-white text-decoration-none track-click">Xem thống kê lượt truy cập</a>
       </div>
     </div>
-
-    <!-- Embed GA4 Analytics -->
-    <div class="mt-4">
-      <h6 class="fw-semibold text-white mb-2">📊 Thống kê trực tiếp từ Google Analytics</h6>
-      <div class="ratio ratio-16x9 rounded shadow">
-        <iframe 
-          src="https://lookerstudio.google.com/embed/reporting/478bd53c-7d94-4d9c-a967-8545b18d35a4/page/2tZSF" 
-          frameborder="0" 
-          allowfullscreen 
-          sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox">
-        </iframe>
-      </div>
-    </div>
   </div>
 </footer>
 
@@ -299,9 +286,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   document.querySelectorAll('.track-click').forEach(el => {
     el.addEventListener('click', e => {
       console.log('User clicked:', e.target.href || e.currentTarget.href);
-      // Tùy chọn: dùng fetch gửi thông tin click về backend
+      // Bạn có thể thay bằng fetch gửi về server
     });
   });
 </script>
+
 
 </html>
