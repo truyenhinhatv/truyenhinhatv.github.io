@@ -243,41 +243,39 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- Video.js -->
   <script src="https://vjs.zencdn.net/8.9.0/video.min.js"></script>
 
-  <script>
-    const player = videojs('liveVideo');
+<script>
+  const player = videojs('liveVideo');
 
-    function changeStream(url) {
-      player.src({
-        src: url,
-        type: 'application/x-mpegURL'
-      });
-      player.play();
-
-      // Ẩn fallback nếu có
-      const fallback = document.getElementById("fallback-message");
-      if (fallback) fallback.style.display = "none";
-    }
-
-    // Fallback nếu stream lỗi
-    player.on('error', function () {
-      const errorCode = player.error().code;
-      console.warn("Stream error code:", errorCode);
-
-      const currentSrc = player.currentSrc();
-      if (currentSrc.includes('.m3u8')) {
-        console.log("Falling back to backup video...");
-
-        const fallbackMessage = document.getElementById("fallback-message");
-        if (fallbackMessage) fallbackMessage.style.display = "block";
-
-        player.src({
-          src: 'testfall.mp4?t=' + Date.now(),
-          type: 'video/mp4'
-        });
-        player.play();
-      }
+  function selectChannel(el, streamUrl) {
+    document.querySelectorAll('.channel-logo').forEach(div => {
+      div.classList.remove('active');
     });
-  </script>
+    el.classList.add('active');
+    changeStream(streamUrl);
+  }
+
+  function changeStream(url) {
+    player.src({
+      src: url,
+      type: 'application/x-mpegURL'
+    });
+    player.play();
+    const fallback = document.getElementById("fallback-message");
+    if (fallback) fallback.style.display = "none";
+  }
+
+  // fallback như cũ
+  player.on('error', function () {
+    const fallbackMessage = document.getElementById("fallback-message");
+    if (fallbackMessage) fallbackMessage.style.display = "block";
+    player.src({
+      src: 'testfall.mp4?t=' + Date.now(),
+      type: 'video/mp4'
+    });
+    player.play();
+  });
+</script>
+
 </body>
 <!-- Bootstrap CDN -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
