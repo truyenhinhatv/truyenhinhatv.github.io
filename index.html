@@ -89,6 +89,29 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       margin-top: 30px;
     }
 
+    .channel-logo {
+      background-color: #555;
+      padding: 10px;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: 0.3s;
+      filter: grayscale(1);
+    }
+
+    .channel-logo img {
+      width: 60px;
+      height: auto;
+    }
+
+    .channel-logo:hover {
+      transform: scale(1.05);
+    }
+
+    .channel-logo.active {
+      background-color: #8b0000;
+      filter: none;
+    }
+
     .tab-button {
       margin: 5px;
     }
@@ -142,10 +165,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h4 class="mb-4">#Xemtrựctuyến</h4>
 
         <div class="d-flex gap-3 channel-icons mb-3">
-          <img src="atvhd.png" onclick="changeStream('https://vthanh.utako.moe/ATVHD/index.m3u8')" alt="ATVHD">
-          <img src="2aed.png" onclick="changeStream('https://vthanh.utako.moe/oni/index.m3u8')" alt="ATV2">
-          <img src="1plus.png" onclick="changeStream('https://vthanh.utako.moe/tpvchannel/index.m3u8')" alt="TPV">
+          <div class="channel-logo" onclick="selectChannel(this, 'https://vthanh.utako.moe/ATVHD/index.m3u8')">
+            <img src="atvhd.png" alt="ATVHD">
+          </div>
+          <div class="channel-logo" onclick="selectChannel(this, 'https://vthanh.utako.moe/oni/index.m3u8')">
+            <img src="2aed.png" alt="ATV2">
+          </div>
+          <div class="channel-logo" onclick="selectChannel(this, 'https://vthanh.utako.moe/tpvchannel/index.m3u8')">
+            <img src="1plus.png" alt="TPV">
+          </div>
         </div>
+
 
         <video
           id="liveVideo"
