@@ -318,6 +318,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }, false);
 </script>
 
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const header = document.querySelector("header");
+    const body = document.querySelector("body");
+    const headerHeight = header.offsetHeight;
+    body.style.paddingTop = headerHeight + "px";
+  });
+</script>
+
   
 </body>
 <!-- Bootstrap CDN -->
