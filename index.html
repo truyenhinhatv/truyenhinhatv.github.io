@@ -249,47 +249,61 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     });
   </script>
 </body>
-<!-- Bootstrap 5 -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+<!-- Bootstrap CDN -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<!-- Footer -->
-<footer class="text-white py-4" style="background: linear-gradient(to right, #ff0000, #cc0000);">
+<!-- Footer ANetwork -->
+<footer style="background: linear-gradient(90deg, #b30000, #ff4d4d); color: white; padding: 30px 0;">
   <div class="container">
-    <div class="row align-items-start">
-      <!-- Left: Title + Copyright -->
-      <div class="col-md-6 mb-3">
-        <h5 class="fw-bold mb-2">HỆ THỐNG MẠNG LƯỚI TRUYỀN THÔNG ANETWORK</h5>
-        <p class="mb-1">© 2025 Anetwork. All rights reserved.</p>
-        <p class="mb-0 small">Mọi hình thức sao chép phải có sự đồng ý bằng văn bản.</p>
+    <div class="row">
+
+      <!-- Logo & Info -->
+      <div class="col-md-4 mb-4">
+        <h4 style="color: #fff; font-weight: bold;">ANETWORK</h4>
+        <p style="margin-bottom: 5px; font-weight: 600;">HỆ THỐNG MẠNG LƯỚI TRUYỀN THÔNG ANETWORK</p>
+        <p>Trung tâm truyền thông đa nền tảng chuyên nghiệp</p>
+        <p>Trụ sở: Số XX, Đường ABC, Quận DEF, TP.GHI</p>
+        <p>Giấy phép hoạt động: Đang cập nhật</p>
       </div>
 
-      <!-- Right: Social + Tracking links -->
-      <div class="col-md-6 mb-3 text-md-end">
-        <h6 class="fw-semibold">Liên kết mạng xã hội</h6>
-        <div class="mb-2">
-          <a href="https://facebook.com" class="text-white me-3 fs-5 track-click" target="_blank"><i class="bi bi-facebook"></i></a>
-          <a href="https://youtube.com" class="text-white me-3 fs-5 track-click" target="_blank"><i class="bi bi-youtube"></i></a>
-          <a href="https://zalo.me" class="text-white me-3 fs-5 track-click" target="_blank"><i class="bi bi-chat-left-dots-fill"></i></a>
-          <a href="https://spotify.com" class="text-white fs-5 track-click" target="_blank"><i class="bi bi-spotify"></i></a>
+      <!-- Social Media -->
+      <div class="col-md-4 mb-4">
+        <h5>Kết nối mạng xã hội</h5>
+        <div class="d-flex gap-3 mt-2">
+          <a href="#" target="_blank"><img src="https://img.icons8.com/ios-filled/24/ffffff/facebook-new.png" alt="Facebook" /></a>
+          <a href="#" target="_blank"><img src="https://img.icons8.com/ios-filled/24/ffffff/youtube-play.png" alt="YouTube" /></a>
+          <a href="#" target="_blank"><img src="https://img.icons8.com/ios-filled/24/ffffff/tiktok.png" alt="TikTok" /></a>
+          <a href="#" target="_blank"><img src="https://img.icons8.com/ios-filled/24/ffffff/spotify.png" alt="Spotify" /></a>
+          <a href="#" target="_blank"><img src="https://img.icons8.com/ios-filled/24/ffffff/zalo.png" alt="Zalo" /></a>
         </div>
 
-        <h6 class="fw-semibold mt-3">Theo dõi hoạt động</h6>
-        <a href="https://anetwork.vn/statistics" class="d-block text-white text-decoration-none track-click">Xem thống kê lượt truy cập</a>
+        <div class="mt-3">
+          <p><strong>Hotline:</strong> <a href="tel:0999888777" style="color: #ffd966;">0999.888.777</a></p>
+          <p><strong>Email:</strong> <a href="mailto:contact@anetwork.vn" style="color: #ffd966;">contact@anetwork.vn</a></p>
+        </div>
+      </div>
+
+      <!-- Click Tracking -->
+      <div class="col-md-4 mb-4">
+        <h5>Thống kê tương tác</h5>
+        <p>Số lượt click hôm nay: <span id="clickCount" class="fw-bold">0</span></p>
+        <button class="btn btn-light btn-sm" onclick="trackClick()">+ Ghi nhận click</button>
       </div>
     </div>
+
+    <hr style="border-color: rgba(255,255,255,0.2);" />
+    <p class="text-center mb-0">© 2025 HỆ THỐNG MẠNG LƯỚI TRUYỀN THÔNG ANETWORK</p>
   </div>
 </footer>
 
-<!-- JavaScript tracking -->
 <script>
-  document.querySelectorAll('.track-click').forEach(el => {
-    el.addEventListener('click', e => {
-      console.log('User clicked:', e.target.href || e.currentTarget.href);
-      // Bạn có thể thay bằng fetch gửi về server
-    });
-  });
+  let count = 0;
+  function trackClick() {
+    count++;
+    document.getElementById("clickCount").innerText = count;
+  }
 </script>
+
 
 
 </html>
