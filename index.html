@@ -90,21 +90,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
 
     .channel-logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 90px;
+      height: 60px;
       background-color: #555;
-      padding: 10px;
-      border-radius: 15px;
-      cursor: pointer;
+      border-radius: 12px;
+      padding: 5px;
       transition: 0.3s;
       filter: grayscale(1);
     }
 
     .channel-logo img {
-      width: 60px;
-      height: auto;
-    }
-
-    .channel-logo:hover {
-      transform: scale(1.05);
+      max-height: 100%;
+      max-width: 100%;
+      object-fit: contain;
     }
 
     .channel-logo.active {
