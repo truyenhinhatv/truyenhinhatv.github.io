@@ -156,6 +156,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .channel-icons img:hover {
       transform: scale(1.1);
     }
+    .trend-label {
+      background-color: #c20000;
+      color: white;
+      padding: 6px 14px;
+      border-radius: 10px;
+      font-weight: bold;
+      display: inline-flex;
+      align-items: center;
+      white-space: nowrap; /* Không xuống dòng */
+      gap: 8px;
+      font-size: 15px;
+    }
+
   </style>
 </head>
 
@@ -189,7 +202,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- Thanh Xu hướng từ NewsData.io -->
 <div id="trendBar" style="background: linear-gradient(to right, #e0f8ea, #ffe5e5); padding: 10px 20px; display: flex; align-items: center; gap: 20px;">
   <div style="background-color: #c20000; color: white; padding: 6px 14px; border-radius: 8px; font-weight: bold; display: flex; align-items: center;">
-    <i class="bi bi-graph-up-arrow me-2"></i> Xu hướng
+    <i class="bi bi-graph-up-arrow me-2"></i> <span>Xu hướng</span>
   </div>
   <marquee id="trendMarquee" scrollamount="6" behavior="scroll" direction="left" style="color: #222; font-weight: 500;">
     Đang tải xu hướng...
