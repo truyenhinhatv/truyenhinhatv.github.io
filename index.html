@@ -202,7 +202,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script>
   async function updateNewskeywords() {
     try {
-      const res = await fetch("https://newsdata.io/api/1/news?apikey=pub_52d8a5d58409471e9ed757a309c9cc44&country=VN&language=vi");
+      const res = await fetch("https://newsdata.io/api/1/news?apikey=pub_52d8a5d58409471e9ed757a309c9cc44&country=vi&language=vi");
       if (!res.ok) throw new Error("Bad response");
       const data = await res.json();
       const articles = data.results || [];
